@@ -1,0 +1,14 @@
+<div class="card m-3">
+  <h5 class="card-header">Student Detail</h5>
+  <div class="card-body">
+    @if (student) {
+      <p><strong>ID :</strong> {{ student.id }}</p>
+      <p><strong>First Name :</strong> {{ student.firstName }}</p>
+      <p><strong>Last Name :</strong> {{ student.lastName }}</p>
+      <p><strong>Email :</strong> {{ student.email }}</p>
+      <a routerLink="/students" class="btn btn-secondary">Back</a>
+      <a [routerLink]="['/students', student.id, 'edit']"
+         class="btn btn-warning ml-2">Edit</a>
+    }
+  </div>
+</div>

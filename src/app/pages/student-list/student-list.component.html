@@ -1,0 +1,44 @@
+<div class="card m-3">
+  <h5 class="card-header">
+    Students List
+    <button class="btn btn-sm btn-secondary float-right" (click)="logout()">
+      Logout
+    </button>
+  </h5>
+  <div class="card-body">
+    <a routerLink="/students/new" class="btn btn-primary mb-3">Add Student</a>
+
+    @if (loading) { <p>Loading...</p> }
+
+    @if (!loading && students.length === 0) { <p>No students found.</p> }
+
+    @if (!loading && students.length > 0) {
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th><th>First Name</th><th>Last Name</th>
+            <th>Email</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (student of students; track student.id) {
+            <tr>
+              <td>{{ student.id }}</td>
+              <td>{{ student.firstName }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.email }}</td>
+              <td>
+                <a [routerLink]="['/students', student.id]"
+                   class="btn btn-sm btn-info mr-1">Detail</a>
+                <a [routerLink]="['/students', student.id, 'edit']"
+                   class="btn btn-sm btn-warning mr-1">Edit</a>
+                <button (click)="deleteStudent(student.id)"
+                        class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>
