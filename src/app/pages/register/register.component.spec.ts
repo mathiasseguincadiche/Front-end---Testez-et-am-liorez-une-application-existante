@@ -27,4 +27,14 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+it('should set submitted to true on submit', () => {
+    component.onSubmit();
+    expect(component.submitted).toBe(true);
+  });
+
+  it('should reset form on onReset', () => {
+    component.submitted = true;
+    component.onReset();
+    expect(component.submitted).toBe(false);
+  });
 });
